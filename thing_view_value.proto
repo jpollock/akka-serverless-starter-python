@@ -1,0 +1,36 @@
+// This is the public API offered by your entity.
+syntax = "proto3";
+
+import "google/protobuf/empty.proto";
+import "akkaserverless/annotations.proto";
+import "google/api/annotations.proto";
+
+import "thing_domain.proto";
+
+package com.example.value;
+
+message ThingsResponse {
+  repeated ThingState results = 1; 
+}
+
+service ThingView {
+    rpc UpdateThing(ThingState) returns (ThingState) {
+        option (akkaserverless.method).eventing = {
+          in: {
+            value_entity: "value_things"
+          }
+        };
+        option (akkaserverless.method).view.update = {
+          table: "value_things"
+        };
+    }
+
+    rpc GetThings(google.protobuf.Empty) returns (ThingsResponse) {
+        option (akkaserverless.method).view.query = {
+          query: "SELECT * AS results FROM value_things"
+        };
+        option (google.api.http) = {
+            get: "/value/things"
+          };  
+    }
+}
