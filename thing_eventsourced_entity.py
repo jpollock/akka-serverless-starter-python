@@ -33,13 +33,8 @@ entity = EventSourcedEntity(_THINGEVENTSOURCEDSERVICE, [API_DESCRIPTOR, DOMAIN_D
 
 @entity.command_handler("AddThing")
 def add(state: ThingState, command: Thing, context: EventSourcedCommandContext):
-    np = ThingState(thing_id= item.thing_id, name=item.name)
-    
-    #pa = ThingAdded(thing = np)
-    print("FUNCTION: AddThingCommand:: NP=")
-    print(np)
-    ctx.emit(np)
-
+    np = ThingState(thing_id= command.thing_id, name=command.name)
+    context.emit(np)
     return Empty()
 
 @entity.command_handler("GetThing")

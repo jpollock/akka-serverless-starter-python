@@ -1,9 +1,9 @@
 version: "3"
 services:
-  akka-serverless-function:
-    build: .
-    ports:
-      - "8080:8080"
+  #akka-serverless-function:
+  #  build: .
+  #  ports:
+  #    - "8080:8080"
   akka-serverless-proxy:
     image: gcr.io/akkaserverless-public/akkaserverless-proxy:0.7.0-beta.14
     command: -Dconfig.resource=dev-mode.conf -Dakkaserverless.proxy.eventing.support=google-pubsub-emulator

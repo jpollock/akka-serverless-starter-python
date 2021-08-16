@@ -30,7 +30,7 @@ service ThingView {
           query: "SELECT * AS results FROM event_things"
         };
         option (google.api.http) = {
-            get: "/event/things"
+            get: "/event_sourced/things"
           };  
     }
 }
