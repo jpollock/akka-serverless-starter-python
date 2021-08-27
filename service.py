@@ -16,9 +16,9 @@ if __name__ == '__main__':
     
     # create service and add components
     service = AkkaServerlessService()
-    service.add_component(thing_value_entity)
-    service.add_component(thing_view_value)
-    service.add_component(thing_eventsourced_entity)
-    service.add_component(thing_view_eventsourced)
+    #service.add_component(thing_value_entity)
+    #service.add_component(thing_view_value)
+    #service.add_component(thing_eventsourced_entity)
+    #service.add_component(thing_view_eventsourced)
     service.add_component(thing_action)
     service.start()

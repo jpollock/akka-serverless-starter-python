@@ -1,3 +1,3 @@
-./bin/build.sh
+./bin/compile.sh
 
 python service.py
